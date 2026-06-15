@@ -141,14 +141,22 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+@layer components {
+  .orb-background {
+    background: radial-gradient(
+      circle,
+      var(--accent-text-light),
+      transparent 70%
+    );
   }
-  body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
+}
+
+@layer utilities {
+  .radial-gradient {
+    background: radial-gradient(
+      circle at 70% 30%,
+      rgba(198, 165, 114, 0.25),
+      transparent 60%
+    );
   }
 }

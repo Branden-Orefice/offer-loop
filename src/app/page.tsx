@@ -11,6 +11,7 @@ export default async function Home() {
 
   return (
     <main>
+      <div className="radial-gradient pointer-events-none absolute top-0 right-0 h-[720px] w-[720px]" />
       <Header />
       <Hero />
       <div className="flex flex-col items-center gap-2">
