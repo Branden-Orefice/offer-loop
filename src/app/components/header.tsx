@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const navLinks = [
   {
@@ -57,7 +58,7 @@ const Header = () => {
 
         <div className="hidden items-center gap-4 lg:flex">
           <Button variant="ghost" className="cursor-pointer text-sm font-light">
-            Sign in
+            <Link href="/auth/sign-in">Sign in</Link>
           </Button>
           <Button className="cursor-pointer bg-(--accent-text-medium) p-4 font-semibold text-(--ink-text-dark) transition-all duration-300 hover:bg-(--accent-text-medium)/80">
             Land your next offer
@@ -94,7 +95,7 @@ const Header = () => {
               variant="ghost"
               className="w-full justify-start text-sm font-light"
             >
-              Sign in
+              <Link href="/auth/sign-in">Sign in</Link>
             </Button>
             <Button className="w-full bg-(--accent-text-medium) font-semibold text-(--ink-text-dark)">
               Land your next offer
