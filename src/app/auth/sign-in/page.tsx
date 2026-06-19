@@ -9,17 +9,17 @@ import { Label } from "@/components/ui/label";
 
 const inboxCardItems = [
   {
-    dot: "--accent-text-medium",
+    dot: "bg-(--accent-text-medium)",
     title: "Loom offer letter received",
     sub: "$218k base + equity · respond by 6/20",
   },
   {
-    dot: "--success-text",
+    dot: "bg-(--success-text)",
     title: "Retool on-site scheduled",
     sub: "Fri · 4 loops, system design focus",
   },
   {
-    dot: "--accent-text-light",
+    dot: "bg-(--accent-text-light)",
     title: "Notion phone screen booked",
     sub: "Tue 2:00 PM PT · prep deck ready",
   },
@@ -50,9 +50,8 @@ const SignInPage = () => {
               welcome back
             </h3>
             <h1 className="w-130 text-5xl font-bold text-(--card-background)">
-              Your pipeline didn&apos;t stop while you were away -{" "}
-              <span className="text-(--accent-text-medium)">3 new updates</span>
-              .
+              Turn applications into
+              <span className="text-(--accent-text-medium)"> offers</span>.
             </h1>
 
             <div className="card-glass-background mt-8 w-130 flex-1 space-y-4 rounded-lg border p-5">
@@ -75,7 +74,7 @@ const SignInPage = () => {
                     className="flex items-start gap-3 py-3 first:pt-0 last:pb-0"
                   >
                     <span
-                      className={`mt-1.5 size-2 shrink-0 rounded-full bg-(${item.dot})`}
+                      className={`mt-1.5 size-2 shrink-0 rounded-full ${item.dot}`}
                     />
                     <div>
                       <p className="text-sm font-semibold text-(--card-background)">
@@ -92,7 +91,7 @@ const SignInPage = () => {
           <div className="flex gap-8">
             <div className="flex-col border-r border-white/15">
               <h2 className="text-3xl font-bold text-(--card-background)">
-                487,210
+                7,210
               </h2>
               <p className="leading-widest mr-6 text-xs text-white/40 uppercase">
                 Applications Tracked
@@ -100,7 +99,7 @@ const SignInPage = () => {
             </div>
             <div className="flex-col">
               <h2 className="text-3xl font-bold text-(--card-background)">
-                12,400{" "}
+                400{" "}
                 <span className="text-[16px] text-(--accent-text-medium)">
                   offers
                 </span>
@@ -120,7 +119,7 @@ const SignInPage = () => {
           </p>
           <Link
             className="flex items-center border-b border-(--accent-text-dark) text-[14px] font-bold text-(--ink-text-dark)"
-            href="/"
+            href="/auth/sign-up"
           >
             Create account <MoveRight className="ml-2" size={12} />
           </Link>

@@ -16,14 +16,14 @@ const Hero = () => {
             <br />
             search
             <br />
-            with
-            <span className="text-(--accent-text-dark)"> receipts.</span>
+            with a<span className="text-(--accent-text-dark)"> system.</span>
           </h1>
           <p className="text max-w-[50ch] text-left text-sm font-extralight text-(--ink-text-dark) md:text-base">
-            OfferLoop turns the chaos of recruiter threads, take homes, and
-            &quot;we&apos;ll be in touch&quot; into a single board with the
-            numbers behind every decision. Plus an AI that drafts cover letters
-            and runs interview prep.
+            OfferLoop turns the chaos of job hunting into a system. Track every
+            application, never miss a follow-up, remember what each company
+            does, and prepare for interviews with AI-powered guidance. See the
+            numbers behind your search and focus on the actions that lead to
+            offers.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button className="cursor-pointer bg-(--ink-text-dark) p-6 text-(--card-background) transition-all duration-300 hover:bg-(--ink-text-dark)/90">
@@ -38,7 +38,7 @@ const Hero = () => {
           </div>
           <div className="pt-4">
             <span className="text-[11px] font-normal tracking-widest text-(--ink-text-lighter) uppercase">
-              Trusted by candidates from
+              Built for candidates targeting companies like
             </span>
             <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-4">
               <span className="text-base font-bold text-(--ink-text-lighter)">
@@ -78,7 +78,7 @@ const Hero = () => {
               className=""
             />
           </div>
-          <div className="absolute bottom-12 left-0 -rotate-5">
+          <div className="absolute bottom-17 left-0 -rotate-5">
             <Image
               src="/offerloop-ai-cover-letter.png"
               alt="offerloop ai cover letter"
@@ -95,41 +95,28 @@ const Hero = () => {
             <p className="mb-3 text-[10px] tracking-widest text-(--accent-text-medium) uppercase">
               The job search, by the numbers
             </p>
-            <p className="font-semibold">
-              Built on data from{" "}
-              <span className="text-(--accent-text-medium)">487,210</span>{" "}
-              tracked applications across{" "}
-              <span className="text-(--accent-text-medium)">9,300</span>{" "}
-              companies.
+            <p className="text-sm font-semibold">
+              A job search system for tracking applications, managing
+              follow-ups, prepping for interviews, and turning scattered
+              opportunities into a clear pipeline.
             </p>
           </div>
 
           <div className="flex flex-col justify-center border-white/15 md:border-l md:pl-8">
-            <div className="text-4xl font-bold">
-              +38
-              <span className="text-base text-(--accent-text-medium)">%</span>
-            </div>
-            <p className="text-sm text-white/60">
-              interview rate w/ AI letters
-            </p>
+            <div className="text-4xl font-bold">1</div>
+            <p className="text-sm text-white/60">board for every application</p>
           </div>
 
           <div className="flex flex-col justify-center border-white/15 lg:border-l lg:pl-8">
-            <div className="text-4xl font-bold">
-              5.4
-              <span className="text-base text-(--accent-text-medium)">d</span>
-            </div>
+            <div className="text-4xl font-bold">AI</div>
             <p className="text-sm text-white/60">
-              avg. recruiter response time
+              follow-ups, prep, and cover letters
             </p>
           </div>
 
           <div className="flex flex-col justify-center border-white/15 md:border-l md:pl-8">
-            <div className="text-4xl font-bold">
-              12.4
-              <span className="text-base text-(--accent-text-medium)">k</span>
-            </div>
-            <p className="text-sm text-white/60">offers landed this quarter</p>
+            <div className="text-4xl font-bold">0</div>
+            <p className="text-sm text-white/60">missed follow-ups</p>
           </div>
         </div>
       </div>
