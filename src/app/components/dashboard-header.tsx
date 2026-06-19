@@ -7,26 +7,24 @@ import {
 import { Plus, Search } from "lucide-react";
 
 const DashboardHeader = () => {
-  const today = new Date();
-  const formattedDate = today.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const currentDate = new Date();
+  const date = currentDate.toLocaleDateString("en-US", { weekday: "long" });
+  const month = currentDate.toLocaleDateString("en-US", { month: "long" });
+  const dayNumber = currentDate.getDate();
 
   return (
     <header className="p-6">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between">
         <div>
-          <h3 className="mb-2 text-sm tracking-widest text-(--accent-text-medium)">
-            {formattedDate}
+          <h3 className="mb-2 text-[12px] tracking-widest text-(--accent-text-medium) uppercase">
+            {date} • {month} {dayNumber}
           </h3>
           <h1 className="text-3xl font-bold text-(--ink-text-dark)">
             Welcome back, Branden.
           </h1>
         </div>
         <div className="flex items-center gap-4">
-          <InputGroup className="bg-secondary w-[250px] text-xs">
+          <InputGroup className="w-[250px] bg-(--card-background)">
             <InputGroupInput
               className="text-xs"
               id="input-group-search"
