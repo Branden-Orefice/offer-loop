@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 import { EllipsisVerticalIcon, LogOutIcon } from "lucide-react";
-import DisplayUserImage from "@/app/components/display-user-image";
+import DisplayUserImage from "@/components/layout/display-user-image";
 
 const DashboardUser = () => {
   const { session, signOut } = useAuth();

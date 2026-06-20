@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 
 import { auth } from "@/server/better-auth";
 import { getSession } from "@/server/better-auth/server";
-import Header from "./components/header";
-import Hero from "./components/hero";
+import Header from "../components/landing-page/header";
+import Hero from "../components/landing-page/hero";
 
 export default async function Home() {
   const session = await getSession();

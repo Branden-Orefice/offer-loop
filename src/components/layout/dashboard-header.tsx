@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   InputGroup,
@@ -13,8 +15,8 @@ const DashboardHeader = () => {
   const dayNumber = currentDate.getDate();
 
   return (
-    <header className="p-6">
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between">
+    <header>
+      <div className="mx-auto flex items-center justify-between p-6">
         <div>
           <h3 className="mb-2 text-[12px] tracking-widest text-(--accent-text-medium) uppercase">
             {date} • {month} {dayNumber}

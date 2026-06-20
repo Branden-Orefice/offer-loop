@@ -3,7 +3,7 @@
 import * as React from "react";
 import { CircleUserRound } from "lucide-react";
 import Image from "next/image";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const DisplayUserImage = (): React.ReactNode => {
   const { session } = useAuth();

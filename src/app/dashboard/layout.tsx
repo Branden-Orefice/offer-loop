@@ -1,6 +1,6 @@
-import DashboardHeader from "../components/dashboard-header";
-import DashboardSidebar from "../components/dashboard-sidebar";
-import { AuthProvider } from "../context/AuthContext";
+import DashboardHeader from "@/components/layout/dashboard-header";
+import DashboardSidebar from "@/components/layout/dashboard-sidebar";
+import { AuthProvider } from "@/context/AuthContext";
 
 export default function DashboardLayout({
   children,

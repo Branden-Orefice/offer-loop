@@ -1,14 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
-
-export interface StatCardsProps {
-  title: string;
-  value: number;
-  loading: boolean;
-  className?: string;
-  titleClassName?: string;
-  valueClassName?: string;
-}
+import type { StatCardsProps } from "@/types/ui";
 
 const StatCards = ({
   title,

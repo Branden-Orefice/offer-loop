@@ -1,9 +1,11 @@
-import StatCards from "@/app/components/stat-cards";
-import WeeklyGoalCard from "@/app/components/weekly-goal-card";
+import StatCards from "@/components/stat-cards";
+import AiAssistantCard from "@/features/home-page/ai-assistant-card";
+import AnalyticsChart from "@/features/home-page/analytics-chart";
+import WeeklyGoalCard from "@/features/home-page/weekly-goal-card";
 
 const DashboardHomePage = () => {
   return (
-    <div className="px-6">
+    <div className="mx-auto px-6">
       <div className="flex gap-3">
         <StatCards title="Applications" value={80} loading={false} />
         <StatCards title="Interviews" value={14} loading={false} />
@@ -17,6 +19,10 @@ const DashboardHomePage = () => {
         />
       </div>
       <WeeklyGoalCard />
+      <div className="flex gap-4">
+        <AnalyticsChart />
+        <AiAssistantCard />
+      </div>
     </div>
   );
 };

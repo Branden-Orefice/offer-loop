@@ -1,20 +1,14 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { DashboardSidebarLinkProps } from "@/types/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-type SidebarLinkProps = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-};
 
 const DashboardNavLinkSidebarHelper = ({
   href,
   label,
   icon: Icon,
-}: SidebarLinkProps) => {
+}: DashboardSidebarLinkProps) => {
   const pathname = usePathname();
 
   const isActive = pathname === href;

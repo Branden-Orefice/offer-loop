@@ -1,9 +1,8 @@
 "use client";
 
-import { SettingsIcon, Square } from "lucide-react";
-import DashboardUser from "./dashboard-user";
-import DashboardNavLinkSidebarHelper from "./dashboard-nav-link-sidebar-helper";
-import Link from "next/link";
+import { Square } from "lucide-react";
+import DashboardUser from "@/components/layout/dashboard-user";
+import DashboardNavLinkSidebarHelper from "@/components/layout/dashboard-nav-link-sidebar-helper";
 
 const DashboardSidebar = () => {
   const overviewLinks = [
