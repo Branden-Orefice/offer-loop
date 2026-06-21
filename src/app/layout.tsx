@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "@/app/globals.css";
 
 import { type Metadata } from "next";
 import { Manrope, JetBrains_Mono } from "next/font/google";

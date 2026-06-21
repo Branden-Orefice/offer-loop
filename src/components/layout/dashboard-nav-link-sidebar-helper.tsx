@@ -1,8 +1,14 @@
 "use client";
 
-import type { DashboardSidebarLinkProps } from "@/types/ui";
+import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+export type DashboardSidebarLinkProps = {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+};
 
 const DashboardNavLinkSidebarHelper = ({
   href,

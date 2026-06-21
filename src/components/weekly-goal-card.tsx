@@ -1,4 +1,6 @@
-import WeeklyGoalChart from "@/features/home-page/weekly-goal-chart";
+"use client";
+
+import WeeklyGoalChart from "@/components/weekly-goal-chart";
 import { Diamond, Star } from "lucide-react";
 
 const WeeklyGoalCard = () => {

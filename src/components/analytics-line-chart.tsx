@@ -29,7 +29,7 @@ const chartConfig = {
 
 const AnalyticsLineChart = () => {
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer config={chartConfig} className="max-h-[200px] w-full">
       <AreaChart
         accessibilityLayer
         data={chartData}

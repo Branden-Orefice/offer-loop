@@ -1,6 +1,16 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { StatCardsProps } from "@/types/ui";
+
+interface StatCardsProps {
+  title: string;
+  value: number;
+  loading: boolean;
+  className?: string;
+  titleClassName?: string;
+  valueClassName?: string;
+}
 
 const StatCards = ({
   title,

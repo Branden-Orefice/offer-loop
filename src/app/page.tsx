@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { auth } from "@/server/better-auth";
-import { getSession } from "@/server/better-auth/server";
+import { auth } from "@/lib/better-auth";
+import { getSession } from "@/lib/better-auth/server";
 import Header from "../components/landing-page/header";
 import Hero from "../components/landing-page/hero";
 
