@@ -1,4 +1,5 @@
 "use client";
+
 import StatCards from "@/components/stat-cards";
 import AiAssistantCard from "@/components/ai-assistant-card";
 import AnalyticsChart from "@/components/analytics-chart";
