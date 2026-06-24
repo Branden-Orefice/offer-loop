@@ -2,6 +2,7 @@
 
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import MatchBar from "@/components/matchbar";
 
 const AiPracticeCard = () => {
   const company = "Retool";
@@ -11,9 +12,6 @@ const AiPracticeCard = () => {
   const behavioralValue = 91;
   const codingFluencyValue = 64;
 
-  const systemDesignProgressValue = Math.trunc((systemDesignValue / 100) * 100);
-  const behavioralProgressValue = Math.trunc((behavioralValue / 100) * 100);
-  const codingProgressValue = Math.trunc((codingFluencyValue / 100) * 100);
   return (
     <div className="h-70 w-full flex-1 overflow-hidden rounded-xl border-none bg-(--card-background) p-6">
       <div className="flex items-center gap-4">
@@ -30,32 +28,25 @@ const AiPracticeCard = () => {
           AI generates role-specific questions, scores your responses, and
           provides feedback on what to tighten.
         </p>
-        <div className="flex items-center justify-between text-xs text-(--ink-text-dark)">
-          <span>System design</span>
-          <span className="text-(--success-text)">{systemDesignValue}</span>
-        </div>
-        <div
-          className="relative flex h-2 w-full items-center overflow-x-hidden rounded-sm border-none bg-(--success-text)"
-          style={{ width: `${systemDesignProgressValue}%` }}
+        <MatchBar
+          label="System design"
+          value={systemDesignValue}
+          className="bg-(--success-text)"
+          valueClassName="text-(--success-text)"
         />
-        <div className="flex items-center justify-between text-xs text-(--ink-text-dark)">
-          <span>Behavioral</span>
-          <span className="text-(--success-text)">{behavioralValue}</span>
-        </div>
-        <div
-          className="relative flex h-2 items-center overflow-x-hidden rounded-sm border-none bg-(--success-text)"
-          style={{ width: `${behavioralProgressValue}%` }}
+        <MatchBar
+          label="Behavioral"
+          value={behavioralValue}
+          className="bg-(--success-text)"
+          valueClassName="text-(--success-text)"
         />
-        <div className="flex items-center justify-between text-xs text-(--ink-text-dark)">
-          <span>Coding fluency</span>
-          <span className="text-(--accent-text-medium)">
-            {codingFluencyValue}
-          </span>
-        </div>
-        <div
-          className="relative flex h-2 items-center overflow-x-hidden rounded-sm border-none bg-(--accent-text-medium)"
-          style={{ width: `${codingProgressValue}%` }}
+        <MatchBar
+          label="Coding fluency"
+          value={codingFluencyValue}
+          className="bg-(--accent-text-medium)"
+          valueClassName="text-(--accent-text-medium)"
         />
+
         <Button className="mt-2 w-full bg-(--ink-text-dark) text-(--card-background) transition-all duration-300 hover:bg-(--ink-text-dark)/80">
           Start practice session{" "}
           <ArrowRight className="text-(--card-background)" size={16} />

@@ -1,5 +1,6 @@
 "use client";
 
+import ApplicationCalendar from "@/components/application-calendar";
 import ApplicationPageTable from "@/components/application-page-table";
 import ApplicationPageTableColumns from "@/components/application-page-table-columns";
 import ApplicationsBoard from "@/components/applications-board";
@@ -129,7 +130,9 @@ const DashboardApplicationsPage = () => {
             </div>
           </TabsContent>
           <TabsContent value="calendar">
-            <div>calendar</div>
+            <div className="mt-6">
+              <ApplicationCalendar />
+            </div>
           </TabsContent>
         </Tabs>
       </div>

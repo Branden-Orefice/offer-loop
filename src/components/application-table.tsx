@@ -32,7 +32,7 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -44,6 +44,10 @@ export type Application = {
   recruiter: string;
   last_activity: string;
   match: number;
+  location: string;
+  applied: string;
+  compensation: string;
+  source: string;
 };
 
 interface Props {
