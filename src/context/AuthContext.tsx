@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 interface AuthContextType {
   session: {
@@ -42,6 +43,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     refetch,
   } = authClient.useSession();
 
+  const navigate = useRouter();
+
   useEffect(() => {
     if (error) {
       console.error("The session encountered an error.");
@@ -51,6 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const signOut = async () => {
     try {
       await authClient.signOut();
+      navigate.push("/auth/sign-in");
     } catch (error) {
       console.error("There was an issue with signing out:", error);
     }

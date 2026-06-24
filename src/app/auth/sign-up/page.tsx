@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, Check, Mail, MoveRight } from "lucide-react";
 import GlowOrb from "@/components/glow-orb";
@@ -6,23 +8,102 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { authClient } from "@/lib/auth-client";
 
-const checkMarkItems = [
-  {
-    title: "Auto-tracked system",
-    sub: "Every application - screen - on-site - offer move, parsed from your inbox.",
-  },
-  {
-    title: "AI interview prep & tailored guidance",
-    sub: "Tuned by job requirements and your preferences.",
-  },
-  {
-    title: "Read-only access",
-    sub: "We never send emails. We never store your messages, ever.",
-  },
-];
+const signUpSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email"),
+  password: z.string().min(12, "Password must be at least 12 characters"),
+});
+
+type SignUpFormData = z.infer<typeof signUpSchema>;
 
 const SignUpPage = () => {
+  const form = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  const { isSubmitting } = form.formState;
+
+  const handleSignUp = async (data: SignUpFormData) => {
+    try {
+      const name = `${data.firstName} ${data.lastName}`;
+      const response = await authClient.signUp.email(
+        {
+          ...data,
+          name,
+          callbackURL: "/",
+        },
+        {
+          onError: (context) => {
+            console.error(context.error.message);
+          },
+        },
+      );
+      if (response) {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onSubmitGoogle = async () => {
+    try {
+      await authClient.signIn.social(
+        {
+          provider: "google",
+          callbackURL: "/dashboard/home",
+          errorCallbackURL: "/auth/sign-up",
+        },
+        {
+          onRequest() {
+            console.log("Signing up with Google...");
+          },
+          onError(context) {
+            console.error(
+              "There was an error signing up with Google.",
+              context.error.message,
+            );
+          },
+        },
+      );
+    } catch (error) {
+      console.error(
+        "An unexpected error occurred during Google sign-up:",
+        error,
+      );
+    }
+  };
+
+  const checkMarkItems = [
+    {
+      title: "Auto-tracked system",
+      sub: "Every application - screen - on-site - offer move, parsed from your inbox.",
+    },
+    {
+      title: "AI interview prep & tailored guidance",
+      sub: "Tuned by job requirements and your preferences.",
+    },
+    {
+      title: "Read-only access",
+      sub: "We never send emails. We never store your messages, ever.",
+    },
+  ];
+
   return (
     <div className="grid min-h-dvh grid-cols-2">
       <div className="relative flex w-full flex-col overflow-hidden bg-(--ink-text-dark)">
@@ -132,8 +213,15 @@ const SignUpPage = () => {
               opportunity.
             </p>
 
-            <form className="space-y-4">
-              <Button className="w-full cursor-pointer bg-(--ink-text-dark) p-5 hover:bg-(--ink-text-dark)/80">
+            <form
+              className="space-y-4"
+              onSubmit={form.handleSubmit(handleSignUp)}
+            >
+              <Button
+                type="button"
+                onClick={onSubmitGoogle}
+                className="w-full cursor-pointer bg-(--ink-text-dark) p-5 hover:bg-(--ink-text-dark)/80"
+              >
                 <div className="flex w-full items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Mail className="text-(--accent-text-dark)" />
@@ -146,7 +234,10 @@ const SignUpPage = () => {
                 </div>
               </Button>
 
-              <Button className="w-full cursor-pointer bg-(--card-background) p-5 hover:bg-(--card-background)/60">
+              <Button
+                type="button"
+                className="w-full cursor-pointer bg-(--card-background) p-5 hover:bg-(--card-background)/60"
+              >
                 <div className="flex w-full items-center gap-2">
                   <Mail className="text-(--ink-text-dark)" />
                   <span className="text-(--ink-text-dark)">
@@ -162,7 +253,6 @@ const SignUpPage = () => {
                 </span>
                 <div className="h-px flex-1 bg-(--ink-text-light)/40" />
               </div>
-
               <FieldGroup className="flex flex-row gap-4">
                 <Field className="flex-1">
                   <FieldLabel
@@ -176,9 +266,9 @@ const SignUpPage = () => {
                       className="md:text-md text-sm"
                       type="text"
                       id="input-group-first-name"
-                      name="input-group-first-name"
                       required
                       placeholder="First Name"
+                      {...form.register("firstName")}
                     />
                   </InputGroup>
                 </Field>
@@ -195,9 +285,9 @@ const SignUpPage = () => {
                       className="md:text-md text-sm"
                       type="text"
                       id="input-group-last-name"
-                      name="input-group-last-name"
                       required
                       placeholder="Last Name"
+                      {...form.register("lastName")}
                     />
                   </InputGroup>
                 </Field>
@@ -216,9 +306,9 @@ const SignUpPage = () => {
                       className="md:text-md text-sm"
                       type="email"
                       id="input-group-email"
-                      name="input-group-email"
                       required
                       placeholder="you@email.com"
+                      {...form.register("email")}
                     />
                   </InputGroup>
                 </Field>
@@ -235,11 +325,11 @@ const SignUpPage = () => {
                       className="md:text-md text-sm"
                       type="password"
                       id="input-group-password"
-                      name="input-group-password"
                       required
                       minLength={12}
                       maxLength={64}
                       placeholder="Min. 12 characters"
+                      {...form.register("password")}
                     />
                   </InputGroup>
                 </Field>
@@ -265,6 +355,7 @@ const SignUpPage = () => {
               <Button
                 className="w-full cursor-pointer bg-(--accent-text-medium) p-5 text-(--ink-text-dark) hover:bg-(--accent-text-medium)/80"
                 type="submit"
+                disabled={isSubmitting}
               >
                 Create Account <MoveRight className="ml-2" size={12} />
               </Button>

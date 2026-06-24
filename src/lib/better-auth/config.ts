@@ -3,6 +3,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 import { env } from "@/env";
 import { db } from "@/lib/db";
+import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -11,20 +12,28 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 60,
+    },
+  },
+  plugins: [nextCookies()],
   socialProviders: {
     google: {
       clientId: env.BETTER_AUTH_GOOGLE_CLIENT_ID,
       clientSecret: env.BETTER_AUTH_GOOGLE_CLIENT_SECRET,
+      scope: [
+        "openid",
+        "profile",
+        "email",
+        "https://www.googleapis.com/auth/gmail.readonly",
+      ],
     },
   },
   advanced: {
     database: {
-      generateId: (options) => {
-        if (options.model === "user") {
-          return false;
-        }
-        return crypto.randomUUID();
-      },
+      generateId: () => crypto.randomUUID(),
     },
   },
 });

@@ -28,6 +28,8 @@ const DashboardUser = () => {
         <Image
           src={displayImage}
           alt={displayName}
+          width={50}
+          height={50}
           className="border-border size-8 shrink-0 rounded-md border"
         />
       ) : (

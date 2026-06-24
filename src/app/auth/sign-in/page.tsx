@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, Mail, MoveRight } from "lucide-react";
 import GlowOrb from "@/components/glow-orb";
@@ -6,26 +8,55 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-
-const inboxCardItems = [
-  {
-    dot: "bg-(--accent-text-medium)",
-    title: "Loom offer letter received",
-    sub: "$218k base + equity · respond by 6/20",
-  },
-  {
-    dot: "bg-(--success-text)",
-    title: "Retool on-site scheduled",
-    sub: "Fri · 4 loops, system design focus",
-  },
-  {
-    dot: "bg-(--accent-text-light)",
-    title: "Notion phone screen booked",
-    sub: "Tue 2:00 PM PT · prep deck ready",
-  },
-];
+import { authClient } from "@/lib/auth-client";
 
 const SignInPage = () => {
+  const onSubmitGoogle = async () => {
+    try {
+      await authClient.signIn.social(
+        {
+          provider: "google",
+          callbackURL: "/dashboard/home",
+          errorCallbackURL: "/auth/sign-in",
+        },
+        {
+          onRequest() {
+            console.log("Signing in with Google...");
+          },
+          onError(context) {
+            console.error(
+              "There was an error signing in with Google.",
+              context.error.message,
+            );
+          },
+        },
+      );
+    } catch (error) {
+      console.error(
+        "An unexpected error occurred during Google sign-in:",
+        error,
+      );
+    }
+  };
+
+  const inboxCardItems = [
+    {
+      dot: "bg-(--accent-text-medium)",
+      title: "Loom offer letter received",
+      sub: "$218k base + equity · respond by 6/20",
+    },
+    {
+      dot: "bg-(--success-text)",
+      title: "Retool on-site scheduled",
+      sub: "Fri · 4 loops, system design focus",
+    },
+    {
+      dot: "bg-(--accent-text-light)",
+      title: "Notion phone screen booked",
+      sub: "Tue 2:00 PM PT · prep deck ready",
+    },
+  ];
+
   return (
     <div className="grid min-h-dvh grid-cols-2">
       <div className="relative flex w-full flex-col overflow-hidden bg-(--ink-text-dark)">
@@ -139,7 +170,11 @@ const SignInPage = () => {
             </p>
             <form>
               <div className="space-y-4">
-                <Button className="w-full cursor-pointer bg-(--ink-text-dark) p-5 hover:bg-(--ink-text-dark)/80">
+                <Button
+                  onClick={onSubmitGoogle}
+                  type="button"
+                  className="w-full cursor-pointer bg-(--ink-text-dark) p-5 hover:bg-(--ink-text-dark)/80"
+                >
                   <div className="flex w-full items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Mail className="text-(--accent-text-dark)" />
@@ -152,7 +187,10 @@ const SignInPage = () => {
                   </div>
                 </Button>
 
-                <Button className="w-full cursor-pointer bg-(--card-background) p-5 hover:bg-(--card-background)/60">
+                <Button
+                  type="button"
+                  className="w-full cursor-pointer bg-(--card-background) p-5 hover:bg-(--card-background)/60"
+                >
                   <div className="flex w-full items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Mail className="text-(--ink-text-dark)" />
@@ -232,7 +270,7 @@ const SignInPage = () => {
                     Keep me signed in for 30 days
                   </Label>
                 </div>
-                <Button className="w-full cursor-pointer bg-(--accent-text-medium) p-5 hover:bg-(--ink-text-dark)/80">
+                <Button className="w-full cursor-pointer bg-(--accent-text-medium) p-5 hover:bg-(--accent-text-medium)/80">
                   <Link
                     className="flex items-center text-[14px] font-bold text-(--ink-text-dark)"
                     href="/"

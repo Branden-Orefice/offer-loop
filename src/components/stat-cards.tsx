@@ -23,7 +23,7 @@ const StatCards = ({
   return (
     <div
       className={cn(
-        "w-full rounded-xl border border-(--card-background) bg-(--card-background) px-4 py-8 shadow-sm",
+        "relative w-full rounded-xl border border-(--card-background) bg-(--card-background) px-4 py-8 shadow-sm",
         className,
       )}
     >
