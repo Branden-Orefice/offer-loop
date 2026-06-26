@@ -121,6 +121,9 @@ const DashboardApplicationsPage = () => {
               <ApplicationPageTable
                 columns={ApplicationPageTableColumns}
                 data={[]}
+                loading={false}
+                onSelectApplication={() => null}
+                selectedApplicationId={null}
               />
             </div>
           </TabsContent>
