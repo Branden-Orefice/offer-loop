@@ -6,9 +6,12 @@ import Image from "next/image";
 import { EllipsisVerticalIcon, LogOutIcon } from "lucide-react";
 import DisplayUserImage from "@/components/layout/display-user-image";
 
+import { useSidebar } from "@/context/SidebarContext";
+
 const DashboardUser = () => {
   const { session, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSidebarOpen } = useSidebar();
 
   const handleSignOut = async () => {
     try {
@@ -23,7 +26,9 @@ const DashboardUser = () => {
   const displayImage = session?.user.image;
 
   return (
-    <div className="flex w-full items-center gap-2">
+    <div
+      className={`flex w-full items-center gap-2 ${!isSidebarOpen ? "justify-center" : ""}`}
+    >
       {displayImage ? (
         <Image
           src={displayImage}
@@ -35,37 +40,39 @@ const DashboardUser = () => {
       ) : (
         <div className="size-8 shrink-0">{DisplayUserImage()}</div>
       )}
-      <div className="flex min-w-0 flex-1 items-center justify-between">
-        <div className="flex min-w-0 flex-col leading-tight">
-          <span className="truncate text-sm font-semibold text-(--ink-text-lighter)">
-            {displayName}
-          </span>
-          <span className="truncate text-[10px] text-(--ink-text-lighter)">
-            {displayEmail}
-          </span>
-        </div>
+      {isSidebarOpen && (
+        <div className="flex min-w-0 flex-1 items-center justify-between">
+          <div className="flex min-w-0 flex-col leading-tight">
+            <span className="truncate text-sm font-semibold text-(--ink-text-lighter)">
+              {displayName}
+            </span>
+            <span className="truncate text-[10px] text-(--ink-text-lighter)">
+              {displayEmail}
+            </span>
+          </div>
 
-        <div className="relative">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex h-7 w-7 items-center justify-center rounded-md transition-colors hover:bg-(--accent-background)"
-          >
-            <EllipsisVerticalIcon className="size-3.5 text-(--ink-text-lightest)" />
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="flex h-7 w-7 items-center justify-center rounded-md transition-colors hover:bg-(--accent-background)"
+            >
+              <EllipsisVerticalIcon className="size-3.5 text-(--ink-text-lightest)" />
+            </button>
 
-          {isMenuOpen && (
-            <div className="border-border absolute -top-1.5 left-5 z-10 ml-2 w-32 rounded-md border bg-(--accent-background) p-1 shadow-md">
-              <button
-                onClick={handleSignOut}
-                className="text-destructive hover:bg-destructive/10 flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs transition-colors"
-              >
-                <LogOutIcon className="size-3.5" />
-                Logout
-              </button>
-            </div>
-          )}
+            {isMenuOpen && (
+              <div className="border-border absolute -top-1.5 left-5 z-10 ml-2 w-32 rounded-md border bg-(--accent-background) p-1 shadow-md">
+                <button
+                  onClick={handleSignOut}
+                  className="text-destructive hover:bg-destructive/10 flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-xs transition-colors"
+                >
+                  <LogOutIcon className="size-3.5" />
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

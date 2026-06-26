@@ -4,6 +4,8 @@ import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useSidebar } from "@/context/SidebarContext";
+
 export type DashboardSidebarLinkProps = {
   href: string;
   label: string;
@@ -16,6 +18,7 @@ const DashboardNavLinkSidebarHelper = ({
   icon: Icon,
 }: DashboardSidebarLinkProps) => {
   const pathname = usePathname();
+  const { isSidebarOpen } = useSidebar();
 
   const isActive = pathname === href;
 
@@ -26,7 +29,7 @@ const DashboardNavLinkSidebarHelper = ({
         isActive
           ? "bg-(--ink-text-dark) text-(--card-background)"
           : "text-(--ink-text-lighter) hover:bg-(--sidebar-background) hover:text-(--ink-text-lighter)"
-      }`}
+      } ${!isSidebarOpen ? "justify-center px-2" : ""}`}
     >
       <Icon
         size={18}
@@ -34,7 +37,7 @@ const DashboardNavLinkSidebarHelper = ({
           isActive ? "text-(--accent-text-medium)" : "text-(--ink-text-lighter)"
         }
       />
-      <span>{label}</span>
+      {isSidebarOpen && <span>{label}</span>}
     </Link>
   );
 };

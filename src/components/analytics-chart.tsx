@@ -8,7 +8,7 @@ import AnalyticsLineChart from "@/components/analytics-line-chart";
 
 const AnalyticsChart = () => {
   return (
-    <div className="mt-6 max-h-[325px] w-full rounded-2xl bg-(--card-background) p-4 sm:p-6">
+    <div className="mt-6 w-full rounded-2xl bg-(--card-background) p-4 sm:p-6">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <p className="text-lg font-bold tracking-wide text-(--ink-text-dark)">
@@ -29,7 +29,7 @@ const AnalyticsChart = () => {
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <p className="text-xs text-(--ink-text-lighter) uppercase">
             Conversion Funnel

@@ -1,6 +1,6 @@
-import DashboardHeader from "@/components/layout/dashboard-header";
-import DashboardSidebar from "@/components/layout/dashboard-sidebar";
 import { AuthProvider } from "@/context/AuthContext";
+import { SidebarProvider } from "@/context/SidebarContext";
+import DashboardLayoutContent from "./layout-content";
 
 export default function DashboardLayout({
   children,
@@ -9,11 +9,9 @@ export default function DashboardLayout({
 }) {
   return (
     <AuthProvider>
-      <div className="grid h-screen grid-cols-[15rem_1fr] grid-rows-[auto_1fr]">
-        <DashboardSidebar />
-        <DashboardHeader />
-        <main className="min-w-0 overflow-y-auto">{children}</main>
-      </div>
+      <SidebarProvider>
+        <DashboardLayoutContent>{children}</DashboardLayoutContent>
+      </SidebarProvider>
     </AuthProvider>
   );
 }

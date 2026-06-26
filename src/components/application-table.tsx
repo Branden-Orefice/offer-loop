@@ -54,16 +54,16 @@ interface Props {
   columns: ColumnDef<Application>[];
   data: Application[];
   loading: boolean;
-  selectedFindingId: string | null;
-  onSelectFinding: (id: string) => void;
+  selectedApplicationId: string | null;
+  onSelectApplication: (id: string) => void;
 }
 
 const ApplicationsTable = ({
   columns,
   data,
   loading,
-  selectedFindingId,
-  onSelectFinding,
+  selectedApplicationId,
+  onSelectApplication,
 }: Props) => {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -165,9 +165,9 @@ const ApplicationsTable = ({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  onClick={() => onSelectFinding(row.original.id)}
+                  onClick={() => onSelectApplication(row.original.id)}
                   data-state={
-                    row.original.id === selectedFindingId && "selected"
+                    row.original.id === selectedApplicationId && "selected"
                   }
                   className="hover:bg-muted/80 data-[state=selected]:bg-primary/5 cursor-pointer transition-all duration-200"
                 >

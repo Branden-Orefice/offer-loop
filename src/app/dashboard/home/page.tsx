@@ -11,8 +11,8 @@ import AiResumeAnalysisCard from "@/components/ai-resume-analysis-card";
 
 const DashboardHomePage = () => {
   return (
-    <div className="mx-auto min-h-dvh px-6">
-      <div className="flex gap-6">
+    <div className="mx-auto px-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <StatCards title="Applications" value={80} loading={false} />
         <StatCards title="Interviews" value={14} loading={false} />
         <StatCards title="Offers" value={3} loading={false} />
@@ -25,17 +25,21 @@ const DashboardHomePage = () => {
         />
       </div>
       <WeeklyGoalCard />
-      <div className="flex gap-6">
-        <div className="flex flex-1 flex-col gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_375px]">
+        <div className="flex flex-col gap-6">
           <AnalyticsChart />
-          <ApplicationsTable columns={ApplicationTableColumns} data={[]} />
+          <ApplicationsTable
+            columns={ApplicationTableColumns}
+            data={[]}
+            loading={false}
+            onSelectApplication={() => null}
+            selectedApplicationId={null}
+          />
         </div>
-        <div className="w-[375px] shrink-0">
-          <div className="flex flex-col gap-6">
-            <AiAssistantCard />
-            <AiPracticeCard />
-            <AiResumeAnalysisCard />
-          </div>
+        <div className="flex flex-col gap-6">
+          <AiAssistantCard />
+          <AiPracticeCard />
+          <AiResumeAnalysisCard />
         </div>
       </div>
     </div>
