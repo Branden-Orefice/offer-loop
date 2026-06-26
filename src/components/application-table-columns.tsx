@@ -25,21 +25,19 @@ const ApplicationTableColumns: ColumnDef<Application>[] = [
     accessorKey: "stage",
     header: "Stage",
     cell: ({ row }) => {
-      const stage = row.getValue("stage");
-      return (
-        <div className="text-(--ink-text-lighter)">{stage ? stage : "-"}</div>
-      );
+      const stage = row.original.stage;
+      return <div className="text-(--ink-text-lighter)">{stage ?? "-"}</div>;
     },
   },
   {
     accessorKey: "recruiter",
     header: "Recruiter",
     cell: ({ row }) => {
-      const recruiter = row.getValue("recruiter");
+      const recruiter = row.original.recruiter;
       return (
         <div className="flex space-x-2">
           <span className="text-(--ink-text-dark)/90 capitalize">
-            {recruiter ? recruiter : "-"}
+            {recruiter ?? "-"}
           </span>
         </div>
       );
@@ -49,10 +47,10 @@ const ApplicationTableColumns: ColumnDef<Application>[] = [
     accessorKey: "last_activity",
     header: "Last Activity",
     cell: ({ row }) => {
-      const lastActivity = row.getValue("last_activity");
+      const lastActivity = row.original.last_activity;
       return (
         <div className="rounded-sm p-1 text-sm text-(--ink-text-lighter)">
-          {lastActivity ? lastActivity : "-"}
+          {lastActivity ?? "-"}
         </div>
       );
     },

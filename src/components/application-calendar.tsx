@@ -28,7 +28,7 @@ const ApplicationCalendar = () => {
 
   const firstDayIndex = new Date(year, month, 1).getDay();
 
-  const emptySlots = Array(firstDayIndex).fill(null);
+  const emptySlots: null[] = Array<null>(firstDayIndex).fill(null);
 
   const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import Image from "next/image";
 import { EllipsisVerticalIcon, LogOutIcon } from "lucide-react";
 import DisplayUserImage from "@/components/layout/display-user-image";
 
@@ -23,23 +22,12 @@ const DashboardUser = () => {
 
   const displayEmail = session?.user.email;
   const displayName = session?.user.name;
-  const displayImage = session?.user.image;
 
   return (
     <div
       className={`flex w-full items-center gap-2 ${!isSidebarOpen ? "justify-center" : ""}`}
     >
-      {displayImage ? (
-        <Image
-          src={displayImage}
-          alt={displayName}
-          width={50}
-          height={50}
-          className="border-border size-8 shrink-0 rounded-md border"
-        />
-      ) : (
-        <div className="size-8 shrink-0">{DisplayUserImage()}</div>
-      )}
+      <DisplayUserImage />
       {isSidebarOpen && (
         <div className="flex min-w-0 flex-1 items-center justify-between">
           <div className="flex min-w-0 flex-col leading-tight">

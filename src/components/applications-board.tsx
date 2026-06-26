@@ -7,7 +7,7 @@ import type { Application } from "@/components/application-table";
 
 const mockApplicationBoardData = [
   {
-    id: 1,
+    id: "1",
     stage: "applied",
     company: "Stripe",
     match: 76,
@@ -21,7 +21,7 @@ const mockApplicationBoardData = [
     source: "LinkedIn",
   },
   {
-    id: 2,
+    id: "2",
     stage: "applied",
     company: "Linear",
     match: 72,
@@ -35,7 +35,7 @@ const mockApplicationBoardData = [
     source: "Indeed",
   },
   {
-    id: 3,
+    id: "3",
     stage: "applied",
     company: "Vercel",
     match: 68,
@@ -49,7 +49,7 @@ const mockApplicationBoardData = [
     source: "LinkedIn",
   },
   {
-    id: 4,
+    id: "4",
     stage: "phone-screen",
     company: "Notion",
     match: 81,
@@ -63,7 +63,7 @@ const mockApplicationBoardData = [
     source: "Dice",
   },
   {
-    id: 5,
+    id: "5",
     stage: "phone-screen",
     company: "Ramp",
     match: 79,
@@ -77,7 +77,7 @@ const mockApplicationBoardData = [
     source: "LinkedIn referral",
   },
   {
-    id: 6,
+    id: "6",
     stage: "phone-screen",
     company: "Airtable",
     match: 74,
@@ -91,7 +91,7 @@ const mockApplicationBoardData = [
     source: "GlassDoor",
   },
   {
-    id: 7,
+    id: "7",
     stage: "on-site",
     company: "Retool",
     match: 88,
@@ -105,7 +105,7 @@ const mockApplicationBoardData = [
     source: "Indeed",
   },
   {
-    id: 8,
+    id: "8",
     stage: "on-site",
     company: "Google",
     match: 85,
@@ -119,7 +119,7 @@ const mockApplicationBoardData = [
     source: "LinkedIn",
   },
   {
-    id: 9,
+    id: "9",
     stage: "offer",
     company: "Loom",
     match: 94,
@@ -133,7 +133,7 @@ const mockApplicationBoardData = [
     source: "Indeed",
   },
   {
-    id: 10,
+    id: "10",
     stage: "offer",
     company: "Coda",
     match: 83,
@@ -147,7 +147,7 @@ const mockApplicationBoardData = [
     source: "Dice",
   },
   {
-    id: 11,
+    id: "11",
     stage: "closed",
     company: "Datadog",
     match: 70,
@@ -161,7 +161,7 @@ const mockApplicationBoardData = [
     source: "LinkedIn",
   },
   {
-    id: 12,
+    id: "12",
     stage: "closed",
     company: "Cloudflare",
     match: 65,

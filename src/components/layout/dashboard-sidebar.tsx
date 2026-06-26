@@ -3,7 +3,6 @@
 import { PanelLeft, Square } from "lucide-react";
 import DashboardUser from "@/components/layout/dashboard-user";
 import DashboardNavLinkSidebarHelper from "@/components/layout/dashboard-nav-link-sidebar-helper";
-import { useState } from "react";
 
 import { useSidebar } from "@/context/SidebarContext";
 

@@ -28,7 +28,6 @@ interface AuthContextType {
   } | null;
   loading: boolean;
   signOut: () => Promise<void>;
-  refetch: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,12 +35,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const {
-    data: session,
-    isPending: loading,
-    error,
-    refetch,
-  } = authClient.useSession();
+  const { data: session, isPending: loading, error } = authClient.useSession();
 
   const navigate = useRouter();
 
@@ -61,7 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <AuthContext.Provider value={{ session, loading, signOut, refetch }}>
+    <AuthContext.Provider value={{ session, loading, signOut }}>
       {children}
     </AuthContext.Provider>
   );

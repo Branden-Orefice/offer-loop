@@ -6,8 +6,17 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import type { NormalizedGmailMessage } from "@/lib/gmail/fetch-gmail-messages";
 import { Plus, Search } from "lucide-react";
 
+type GmailSyncSuccess = {
+  count: number;
+  messages: NormalizedGmailMessage[];
+};
+
+type GmailSyncError = {
+  error: string;
+};
 const DashboardHeader = () => {
   const currentDate = new Date();
   const date = currentDate.toLocaleDateString("en-US", { weekday: "long" });
@@ -19,10 +28,11 @@ const DashboardHeader = () => {
       method: "POST",
     });
 
-    const data = await response.json();
+    const data = (await response.json()) as GmailSyncSuccess;
 
     if (!response.ok) {
-      console.error(data.error);
+      const error = (await response.json()) as GmailSyncError;
+      console.error(error.error);
       return;
     }
 

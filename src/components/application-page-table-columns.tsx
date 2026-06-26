@@ -25,20 +25,18 @@ const ApplicationPageTableColumns: ColumnDef<ApplicationPageTable>[] = [
     accessorKey: "stage",
     header: "Stage",
     cell: ({ row }) => {
-      const stage = row.getValue("stage");
-      return (
-        <div className="text-(--ink-text-lighter)">{stage ? stage : "-"}</div>
-      );
+      const stage = row.original.stage;
+      return <div className="text-(--ink-text-lighter)">{stage ?? "-"}</div>;
     },
   },
   {
     accessorKey: "last_activity",
     header: "Last Activity",
     cell: ({ row }) => {
-      const lastActivity = row.getValue("last_activity");
+      const lastActivity = row.original.last_activity;
       return (
         <div className="rounded-sm p-1 text-sm text-(--ink-text-lighter)">
-          {lastActivity ? lastActivity : "-"}
+          {lastActivity ?? "-"}
         </div>
       );
     },
@@ -47,11 +45,11 @@ const ApplicationPageTableColumns: ColumnDef<ApplicationPageTable>[] = [
     accessorKey: "next_action",
     header: "Next Action",
     cell: ({ row }) => {
-      const nextAction = row.getValue("next_action");
+      const nextAction = row.original.next_action;
       return (
         <div className="flex space-x-2">
           <span className="text-(--ink-text-dark)/90 capitalize">
-            {nextAction ? nextAction : "-"}
+            {nextAction ?? "-"}
           </span>
         </div>
       );
