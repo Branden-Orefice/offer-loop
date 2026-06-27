@@ -11,7 +11,7 @@ import AiResumeAnalysisCard from "@/components/ai-resume-analysis-card";
 
 const DashboardHomePage = () => {
   return (
-    <div className="mx-auto px-6">
+    <div className="mx-auto min-h-dvh px-6">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <StatCards title="Applications" value={80} loading={false} />
         <StatCards title="Interviews" value={14} loading={false} />

@@ -13,7 +13,7 @@ const AiPracticeCard = () => {
   const codingFluencyValue = 64;
 
   return (
-    <div className="h-70 w-full flex-1 overflow-hidden rounded-xl border-none bg-(--card-background) p-6">
+    <div className="h-75 w-full overflow-hidden rounded-xl border-none bg-(--card-background) p-6">
       <div className="flex items-center gap-4">
         <div className="flex h-8 w-8 items-center justify-center rounded-md border border-(--accent-text-medium) bg-(--accent-text-medium)/15">
           <Play className="text-(--accent-text-medium)" size={16} />
