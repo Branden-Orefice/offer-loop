@@ -58,8 +58,8 @@ const SignInPage = () => {
   ];
 
   return (
-    <div className="grid min-h-dvh grid-cols-2">
-      <div className="relative flex w-full flex-col overflow-hidden bg-(--ink-text-dark)">
+    <div className="grid min-h-dvh grid-cols-1 lg:grid-cols-2">
+      <div className="relative hidden w-full flex-col overflow-hidden bg-(--ink-text-dark) lg:flex">
         <div className="relative z-10 flex items-center justify-between p-10">
           <GlowOrb className="-top-60 -left-60 size-[700px]" />
           <h2 className="z-30 text-2xl font-bold text-(--card-background)">
@@ -80,12 +80,12 @@ const SignInPage = () => {
             <h3 className="text-[12px] tracking-widest text-(--accent-text-medium) uppercase">
               welcome back
             </h3>
-            <h1 className="w-130 text-5xl font-bold text-(--card-background)">
+            <h1 className="max-w-130 text-5xl font-bold text-(--card-background)">
               Turn applications into
               <span className="text-(--accent-text-medium)"> offers</span>.
             </h1>
 
-            <div className="card-glass-background mt-8 w-130 flex-1 space-y-4 rounded-lg border p-5">
+            <div className="card-glass-background mt-8 max-w-130 flex-1 space-y-4 rounded-lg border p-5">
               <div className="flex items-center justify-between">
                 <p className="text-[10px] tracking-widest text-(--accent-text-medium) uppercase">
                   Inbox · Last 24h
@@ -144,20 +144,26 @@ const SignInPage = () => {
         <GlowOrb className="absolute -right-60 -bottom-60 size-[600px]" />
       </div>
       <div className="flex min-h-dvh flex-col">
-        <div className="flex items-center justify-end gap-4 p-10">
-          <p className="text-sm font-light text-(--ink-text-lighter)">
-            New to OfferLoop?
-          </p>
-          <Link
-            className="flex items-center border-b border-(--accent-text-dark) text-[14px] font-bold text-(--ink-text-dark)"
-            href="/auth/sign-up"
-          >
-            Create account <MoveRight className="ml-2" size={12} />
-          </Link>
+        <div className="flex items-center justify-between gap-4 p-6 lg:justify-end lg:p-10">
+          <h2 className="text-2xl font-bold text-(--ink-text-dark) lg:hidden">
+            OfferLoop
+            <span className="font-bold text-(--accent-text-dark)">.</span>
+          </h2>
+          <div className="flex items-center gap-4">
+            <p className="hidden text-sm font-light text-(--ink-text-lighter) sm:block">
+              New to OfferLoop?
+            </p>
+            <Link
+              className="flex items-center border-b border-(--accent-text-dark) text-[14px] font-bold text-(--ink-text-dark)"
+              href="/auth/sign-up"
+            >
+              Create account <MoveRight className="ml-2" size={12} />
+            </Link>
+          </div>
         </div>
 
-        <div className="flex flex-1 justify-center pt-28">
-          <div className="w-full max-w-md space-y-4 px-10">
+        <div className="flex flex-1 justify-center pt-10 lg:pt-28">
+          <div className="w-full max-w-md space-y-4 px-6 lg:px-10">
             <h4 className="tracking text-start text-xs tracking-widest text-(--accent-text-dark) uppercase">
               01 - sign in
             </h4>

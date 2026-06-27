@@ -105,8 +105,8 @@ const SignUpPage = () => {
   ];
 
   return (
-    <div className="grid min-h-dvh grid-cols-2">
-      <div className="relative flex w-full flex-col overflow-hidden bg-(--ink-text-dark)">
+    <div className="grid min-h-dvh grid-cols-1 lg:grid-cols-2">
+      <div className="relative hidden w-full flex-col overflow-hidden bg-(--ink-text-dark) lg:flex">
         <div className="relative z-10 flex items-center justify-between p-10">
           <GlowOrb className="-top-60 -right-60 size-[700px]" />
           <h2 className="z-30 text-2xl font-bold text-(--card-background)">
@@ -127,7 +127,7 @@ const SignUpPage = () => {
             <h3 className="text-[12px] tracking-widest text-(--accent-text-medium) uppercase">
               Start the loop
             </h3>
-            <h1 className="w-130 text-5xl font-bold text-(--card-background)">
+            <h1 className="max-w-130 text-5xl font-bold text-(--card-background)">
               Win your job search with a
               <span className="text-(--accent-text-medium)"> system</span>.
             </h1>
@@ -185,21 +185,27 @@ const SignUpPage = () => {
       </div>
 
       <div className="flex min-h-dvh flex-col">
-        <div className="flex items-center justify-end gap-4 p-10">
-          <p className="text-sm font-light text-(--ink-text-lighter)">
-            Already on OfferLoop?
-          </p>
+        <div className="flex items-center justify-between gap-4 p-6 lg:justify-end lg:p-10">
+          <h2 className="text-2xl font-bold text-(--ink-text-dark) lg:hidden">
+            OfferLoop
+            <span className="font-bold text-(--accent-text-dark)">.</span>
+          </h2>
+          <div className="flex items-center gap-4">
+            <p className="hidden text-sm font-light text-(--ink-text-lighter) sm:block">
+              Already on OfferLoop?
+            </p>
 
-          <Link
-            className="flex items-center border-b border-(--accent-text-dark) text-[14px] font-bold text-(--ink-text-dark)"
-            href="/auth/sign-in"
-          >
-            Sign in <MoveRight className="ml-2" size={12} />
-          </Link>
+            <Link
+              className="flex items-center border-b border-(--accent-text-dark) text-[14px] font-bold text-(--ink-text-dark)"
+              href="/auth/sign-in"
+            >
+              Sign in <MoveRight className="ml-2" size={12} />
+            </Link>
+          </div>
         </div>
 
-        <div className="flex flex-1 justify-center pt-24">
-          <div className="w-full max-w-md space-y-4 px-10">
+        <div className="flex flex-1 justify-center pt-10 lg:pt-24">
+          <div className="w-full max-w-md space-y-4 px-6 lg:px-10">
             <h4 className="text-start text-xs tracking-widest text-(--accent-text-dark) uppercase">
               01 - create account
             </h4>
