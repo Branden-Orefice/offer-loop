@@ -1,0 +1,58 @@
+const mockData = [
+  {
+    id: "1",
+    company: "Google",
+    role: "Senior Engineer",
+    stage: "Offer",
+    last_activity: "Today • 9:14am",
+    source: "Referral",
+    score: 94,
+  },
+  {
+    id: "2",
+    company: "Notion",
+    role: "Engineering Manager",
+    stage: "On-site",
+    last_activity: "2d • Prep Ready",
+    source: "LinkedIn",
+    score: 88,
+  },
+  {
+    id: "3",
+    company: "Stripe",
+    role: "Product Engineer",
+    stage: "Phone",
+    last_activity: "Scheduled",
+    source: "Indeed",
+    score: 81,
+  },
+  {
+    id: "4",
+    company: "Vercel",
+    role: "Senior Frontend Engineer",
+    stage: "Applied",
+    last_activity: "2d • Auto-Reply",
+    source: "Careers Page",
+    score: 76,
+  },
+  {
+    id: "5",
+    company: "Linear",
+    role: "DevOps Engineer",
+    stage: "Applied",
+    last_activity: "3d • Auto-Reply",
+    source: "Recruiter",
+    score: 72,
+  },
+  {
+    id: "6",
+    company: "Meta",
+    role: "Backend Engineer",
+    stage: "Applied",
+    last_activity: "4d",
+    source: "LinkedIn",
+    score: 68,
+  },
+];
+
+export default mockData;

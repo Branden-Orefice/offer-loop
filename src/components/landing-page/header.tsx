@@ -57,7 +57,10 @@ const Header = () => {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Button variant="ghost" className="cursor-pointer text-sm font-light">
+          <Button
+            variant="ghost"
+            className="cursor-pointer text-sm font-light hover:bg-(--accent-background)"
+          >
             <Link href="/auth/sign-in">Sign in</Link>
           </Button>
           <Button className="cursor-pointer bg-(--accent-text-medium) p-4 font-semibold text-(--ink-text-dark) transition-all duration-300 hover:bg-(--accent-text-medium)/80">
