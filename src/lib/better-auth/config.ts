@@ -1,14 +1,29 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-
 import { env } from "@/env";
 import { db } from "@/lib/db";
 import { nextCookies } from "better-auth/next-js";
+
+const getTrustedOrigins = (): string[] => {
+  if (env.NODE_ENV === "production") {
+    if (!env.APP_URL) {
+      throw new Error("APP_URL is required in production");
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return [env.APP_URL];
+  }
+
+  return ["http://localhost:3000"];
+};
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
   }),
+
+  trustedOrigins: getTrustedOrigins(),
+
   emailAndPassword: {
     enabled: true,
   },
