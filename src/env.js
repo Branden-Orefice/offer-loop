@@ -1,4 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+import { OctagonPause } from "lucide-react";
 import { z } from "zod";
 
 export const env = createEnv({
@@ -24,6 +25,7 @@ export const env = createEnv({
       process.env.NODE_ENV === "production"
         ? z.string().url()
         : z.string().optional(),
+    OPENAI_API_KEY: z.string(),
   },
 
   /**
@@ -50,6 +52,7 @@ export const env = createEnv({
     SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_KEY: process.env.SUPABASE_KEY,
     APP_URL: process.env.APP_URL,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

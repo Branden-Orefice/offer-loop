@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Play } from "lucide-react";
 import EmailAnimation from "./email-animation";
 import LivePreview from "./live-preview";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -30,7 +31,8 @@ const Hero = () => {
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button className="cursor-pointer bg-(--ink-text-dark) p-6 text-(--card-background) transition-all duration-300 hover:bg-(--ink-text-dark)/90">
-              <Mail className="text-(--accent-text-medium)" /> Connect Gmail
+              <Mail className="text-(--accent-text-medium)" />
+              <Link href="/auth/sign-up">Connect Gmail</Link>
             </Button>
             <Button
               variant="outline"

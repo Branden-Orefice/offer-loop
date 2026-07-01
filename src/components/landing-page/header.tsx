@@ -64,7 +64,7 @@ const Header = () => {
             <Link href="/auth/sign-in">Sign in</Link>
           </Button>
           <Button className="cursor-pointer bg-(--accent-text-medium) p-4 font-semibold text-(--ink-text-dark) transition-all duration-300 hover:bg-(--accent-text-medium)/80">
-            Land your next offer
+            <Link href="/auth/sign-up">Land your next offer</Link>
           </Button>
         </div>
 
